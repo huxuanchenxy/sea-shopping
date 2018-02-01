@@ -1,0 +1,15 @@
+# 服务提供者，端口号可以不用指定；
+#server:
+  #port: 8086
+
+spring:
+  application:
+    name: sea-service-user # 服务名称（服务调用者是通过调用此服务名（sea-service-user）来实现服务调用的，与域名和端口号没有关系了）
+
+eureka:
+  instance:
+    hostname: localhost # 配置该服务实例的主机名称
+    lease-renewal-interval-in-seconds: 5 # 心跳时间，表示eureka client发送心跳给eureka server端的频率（缺省为30s）
+  client:
+    service-url:
+      defaultZone: http://localhost:8085/eureka # 指定eureka服务器，这里的 8085 端口号，要与 eureka 服务器的server.port 配置的一致

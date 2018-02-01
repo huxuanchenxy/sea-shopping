@@ -1,0 +1,13 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: sea-web-shop
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8085/eureka # 指定eureka服务器，这里的 8085 端口号，要与 eureka 服务器的server.port 配置的一致
