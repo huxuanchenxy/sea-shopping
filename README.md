@@ -37,4 +37,10 @@ eureka的高可用、服务提供者的高可用
 <br/> http://127.0.0.1:18761 或者 http://127.0.0.1:28761 即可查看eureka的集群信息
 <br/> 其中，18761和28761代表不同的eureka服务器的端口号
 
+##### eureka控制台部分截图预览
+![eureka高可用集群 - eureka控制台](https://gitee.com/uploads/images/2018/0315/215805_8e66620b_341760.jpeg "eureka高可用集群 - eureka控制台.jpg")
+
+<br/>
+
+
 
