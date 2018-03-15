@@ -1,13 +1,13 @@
 server:
-  port: 8087
+  port: 8088 # 应用的端口号
 
 spring:
   application:
-    name: sea-web-shop
+    name: sea-web-shop # 应用名称
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: localhost # 服务消费者应用所在的主机(本地测试的话，就使用localhost即可；当然你也可以在host文件中配置一个虚拟域名；但必须要在本地浏览器中可以访问才行)
   client:
     service-url:
-      defaultZone: http://localhost:8085/eureka # 指定eureka服务器，这里的 8085 端口号，要与 eureka 服务器的server.port 配置的一致
+      defaultZone: http://server.eureka.slave1.com:18761/eureka,http://server.eureka.slave2.com:28761/eureka # 指定eureka服务器集群列表地址

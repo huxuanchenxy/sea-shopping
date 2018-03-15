@@ -1,35 +1,38 @@
+#---------------------------------------------- eureka slave1 注册中心配置 ----------------------------------------------------
 server:
-  # eureka注册中心的默认端口是8761，你也可以指定其他的端口号
-  # 【其他说明】：
-  #      由于eureka默认端口是8761，所以如果port配置的不是8761、同时eureka配置中没有配置register-with-eureka、fetch-registry 都为false的话，项目启动之后，控制台会一直报错，异常信息见上面；
-  #      反之如果port配置的是8761，同时没有配置register-with-eureka、fetch-registry都为false，则项目启动的时候只会报错一次，不会一直循环报错；与上面的现象还是不同的；
-  port: 8085
+  port: 18761
 
+spring:
+  application:
+    name: sea-server-eureka # 应用名称
+  profiles: slave1 # 【eureka服务器集群 —— 节点1】，用于main方法启动的时候，用户需要输入的内容。标识启动的是哪一个eureka服务器；
 
-#---------------------------------------------- eureka 注册中心配置 ----------------------------------------------------
 eureka:
-  client:
-    # 如果eureka配置中没有配置register-with-eureka、fetch-registry 都为false的话，项目启动的时候会报错，异常信息如下：
-    #      ◆ java.net.ConnectException: Connection refused: connect
-    #      ◆ com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-    #   【原因分析】：因为eureka会把自己当做一个client注册到eureka服务器，同时会到eureka服务器抓取注册信息；
-    #   【解决办法】：将 register-with-eureka、fetch-registry 设置为false；
-    register-with-eureka: false # 是否将自己的信息注册到eureka服务器，默认为true
-    fetch-registry: false # 是否到eureka服务器中抓取注册信息
-
-    service-url:
-      # 【defaultZone配置的注意项 & 知识点】：
-      #       我们知道eureka注册中心的默认端口是8761，当我们正好配置eureka服务器的端口是8761的时候（服务提供者配置的肯定也是8761的eureka服务器地址），启动eureka服务器、服务提供者应用之后，2个应用所在的控制台是不会报错的；
-      #       如果我们配置的 server.port 不是8761、同时也没有在eureka中配置defaultZone的话 ，则启动eureka服务器、服务提供者应用之后，你会发现，在eureka服务器的控制台中，会一直循环报错，错误信息如下：
-      #             org.apache.http.conn.ConnectTimeoutException: Connect to localhost:8761 timed out
-      #       其实原因就是 eureka 默认注册中心地址就是 8761 的端口，要想使用自定义端口，需要配置 defaultZone，这样eureka服务器控制台就不报错了，eureka就会到你所指定的defaultZone地址进行通信；
-      #
-      defaultZone: http://localhost:${server.port}/eureka # 设置eureka服务器所在的地址
-
-  server:
-    # 相关配置，参考：https://www.jianshu.com/p/e2bebfb0d075
-    enable-self-preservation: true # 是否开启自我保护模式（默认为true）
-    eviction-interval-timer-in-ms: 5000 # eureka server清理无效节点的时间间隔，默认60000毫秒，即60秒
   instance:
-    lease-expiration-duration-in-seconds: 10 # 表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance发呆时间（缺省为90s），该值至少应该大于lease-renewal-interval-in-seconds配置的数值；
+    hostname: server.eureka.slave1.com # 服务所在主机（一般都是配置域名）；本地测试的话，需要在 host 文件中指定虚拟域名
+  client:
+    service-url:
+      defaultZone: http://server.eureka.slave2.com:28761/eureka # eureka服务器的地址
+
+
+
+# 注意下面是三个横杠：在单一文件中，可用连续三个连字号（---）区分多个文件（节省多个yml文件的配置，在一个yml文件中就可配置）。
+---
+
+#---------------------------------------------- eureka slave2 注册中心配置 ----------------------------------------------------
+server:
+  port: 28761
+
+spring:
+  application:
+    name: sea-server-eureka # 应用名称
+  profiles: slave2 # 【eureka服务器集群 —— 节点2】 用于main方法启动的时候，用户需要输入的内容。标识启动的是哪一个eureka服务器；
+
+eureka:
+  instance:
+    hostname: server.eureka.slave2.com # 服务所在主机（一般都是配置域名；本地测试的话，需要在 host 文件中指定虚拟域名
+  client:
+    service-url:
+      defaultZone: http://server.eureka.slave1.com:18761/eureka # eureka服务器的地址
+
 

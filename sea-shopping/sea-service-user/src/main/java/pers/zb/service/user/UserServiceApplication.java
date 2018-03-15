@@ -1,34 +1,32 @@
 package pers.zb.service.user;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-/**
- *  【遇到的问题】：
- *      【问题描述】：一开始我将UserServiceApplication这个类直接创建于 /src/main/java 目录下，启动项目的时候会出现警告，最终会报错；
- *              警告信息如下：
- *                      ** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
- *              异常信息如下：
- *              Could not evaluate condition on org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$JdbcTemplateConfiguration due to internal class not found.
- *              This can happen if you are @ComponentScanning a springframework package (e.g. if you put a @ComponentScan in the default package by mistake)
- *      【解决办法】：
- *              从警告的内容上来看，简单来说，就是不能在 /src/main/java 目录下有启动类，应该放在自己的package下面，需要创建package；
- *
- *       参考文章：https://segmentfault.com/a/1190000004493460
- */
+import java.util.Scanner;
+
 @EnableEurekaClient
 @SpringBootApplication
 public class UserServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class,args);
 
         /**
-         * 这样也可以启动springboot应用；
-         *      其实SpringApplicationBuilder只是对SpringApplication的启动进行了封装而已；
-         *      看源码就知道了，最终还是调用的SpringApplication.run方法；
+         * 当前项目案例的环境，配置的是eureka集群环境，既然eureka是集群环境，则服务提供者也应该至少有2个实例；
+         *
+         * 所以，不能使用普通的 SpringApplication.run(EurekaServer.class,args); 来启动项目了；因为我们需要指定不同的端口号来启动项目；
+         * 因此，请通过下面的形式来为不同的服务提供者应用指定不同的端口号；
+         *
+         * 【启动步骤就是，需要运行两次main方法，分别输入不同的端口号，与机器上不冲突即可；这样就实现了2个服务提供者的高可用服务了】
          */
-        //new SpringApplicationBuilder(UserServiceApplication.class).run(args);
+
+        System.out.println("================================================== 开始启动 user 服务 =============================================================");
+        System.out.println("请在控制台指定user服务的端口号 —— [端口号随意指定，注意不要与本机端口号出现冲突即可]");
+
+        Scanner scanner = new Scanner(System.in);
+        String port = scanner.nextLine(); //让用户指定端口号
+        new SpringApplicationBuilder(UserServiceApplication.class).properties("server.port=" + port).run(args);//启动项目
+
+        System.out.println("================================================== user服务启动成功 =============================================================");
     }
 }
