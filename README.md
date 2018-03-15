@@ -4,8 +4,7 @@ eureka的高可用、服务提供者的高可用
 ### 启动步骤
 1、首先在本地电脑的host文件中，配置好虚拟域名；
 > 虚拟域名需要与sea-server-eureka、sea-service-user、sea-web-shop中application.yml中配置的eureka.client.service-url.defaultZone的域名一致；
-<br/>
-
+ 
 我本地host文件中的配置如下（注意中间空格）：
 ```
 127.0.0.1 server.eureka.slave1.com server.eureka.slave2.com
