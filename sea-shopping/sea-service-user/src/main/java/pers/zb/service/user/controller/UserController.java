@@ -16,7 +16,7 @@ public class UserController {
 
     /**
      * 只是用于测试，没有实际的业务作用。
-     *      具体调用的地方，请查看 \sea-web-shop\src\main\java\pers\zb\web\shop\controller\ShopController.java 中的 router 方法；
+     *      具体调用的地方，请查看 \sea-shopping\sea-web-shop\src\main\java\pers\zb\web\shop\service\UserServiceFeign.java 中的getUser() 方法的注解以及类注解；
      *
      * @param request
      * @param personId

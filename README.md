@@ -1,5 +1,18 @@
 ### springcloud eureka高可用集群 案例
-eureka的高可用、服务提供者的高可用
+> 当前发行版本，提供了eureka的高可用、服务提供者的高可用、feign负载均衡的案例；
+
+ **注意** 
+> 该版本中所使用的负载均衡处理策略为 feign 的形式，并未使用rest + ribbon；
+
+> 关于rest + ribbon处理负载均衡的案例，请查看v2.0版本中；
+
+ **feign与ribbon的知识点：** 
+> springcloud全家桶中的负载均衡的处理策略，主要有两种方式：
+> 1. rest + ribbon 
+> 2. feign
+
+值得注意的是，feign 里面已经包含了 ribbon（Feign 中也使用了 Ribbon）；最重要的是，它俩都支持软负载均衡。
+常用的是feign。
 
 ### 启动步骤
 1、首先在本地电脑的host文件中，配置好虚拟域名；
