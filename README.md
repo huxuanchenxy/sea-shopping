@@ -1,4 +1,4 @@
-### springcloud eureka高可用集群 案例
+#### springcloud基础案例。eureka服务注册与发现、eureka高可用集群、服务提供者高可用、feign处理负载均衡
 > 当前发行版本，提供了eureka的高可用、服务提供者的高可用、feign负载均衡的案例；
 
  **注意** 
