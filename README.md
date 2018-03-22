@@ -95,7 +95,7 @@ rabbitmq目前只用在配置中心，实现动态刷新spring bean，建议安�
 > 故：本地需要提前安装好rabbitmq，这里就不演示如何安装了，请自行解决<br/><br/>
 
 > 下面开始操作：<br/><br/>
-1、首先查看一下message的值，浏览器访问http://localhost:(shop应用的端口号)/config/hello，显示的内容就是当前应用上下文中的message属性值
+1、首先查看一下message的值，浏览器访问http://localhost:(shop应用的端口号)/config/hello ，显示的内容就是当前应用上下文中的message属性值
 <br/><br/>2、访问上面的码云git项目，找到sea-web-shop-dev.properties属性文件，修改文件中的message属性值并提交
 <br/><br/>3、git仓库中午文件修改之后，shop应用并没有动态更新message的值，需要我们手动调用一下接口http://localhost:(shop应用的端口号)/bus/refresh ，该接口只支持POST请求，本地测试的话建议使用postmain工具
 <br/><br/>4、请求/bus/refresh后，及时切换到idea并打开shop应用控制台（如果启动多个shop应用的话，每个shop应用都会有更新），就会看到shop应用会自动获取git仓库最新内容，并实现动态更新bean属性值，其中的实现原理就是利用了MQ。
