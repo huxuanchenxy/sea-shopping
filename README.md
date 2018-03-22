@@ -1,3 +1,8 @@
+<br/>
+
+ **项目wiki文档 [https://gitee.com/zhoubang85/sea-springcloud/wikis/pages](https://gitee.com/zhoubang85/sea-springcloud/wikis/pages)** 
+
+
 #### springcloud全家桶
 > 项目中使用的技术如下：
 - Eureka注册中心 （支持集群部署）
@@ -12,6 +17,7 @@
 > 服务与应用
 - user服务提供者 （支持集群部署）
 - shop服务消费者 （支持集群部署）
+
 
 #### 项目启动
 ##### 1、前期准备
