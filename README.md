@@ -97,15 +97,15 @@ rabbitmq目前只用在配置中心，实现动态刷新spring bean，建议安�
 > 下面开始操作：<br/><br/>
 1、首先查看一下message的值，浏览器访问http://localhost:(shop应用的端口号)/config/hello，显示的内容就是当前应用上下文中的message属性值
 <br/><br/>2、访问上面的码云git项目，找到sea-web-shop-dev.properties属性文件，修改文件中的message属性值并提交
-<br/><br/>3、git仓库中午文件修改之后，shop应用并没有动态更新message的值，需要我们手动调用一下接口http://localhost:(shop应用的端口号)/bus/refresh，该接口只支持POST请求，本地测试的话建议使用postmain工具
+<br/><br/>3、git仓库中午文件修改之后，shop应用并没有动态更新message的值，需要我们手动调用一下接口http://localhost:(shop应用的端口号)/bus/refresh ，该接口只支持POST请求，本地测试的话建议使用postmain工具
 <br/><br/>4、请求/bus/refresh后，及时切换到idea并打开shop应用控制台（如果启动多个shop应用的话，每个shop应用都会有更新），就会看到shop应用会自动获取git仓库最新内容，并实现动态更新bean属性值，其中的实现原理就是利用了MQ。
-<br/><br/>5、在shop应用不重启的情况下，浏览器再次访问http://localhost:(shop应用的端口号)/config/hello，这时候你就会发现，显示的内容已经是git仓库最新值
+<br/><br/>5、在shop应用不重启的情况下，浏览器再次访问http://localhost:(shop应用的端口号)/config/hello ，这时候你就会发现，显示的内容已经是git仓库最新值
 
  -  **Turbine聚合监控**
 > 当前项目都是集群环境，所以我们采用Turbine实现服务的监控；至于如何配置实现的，请查看\sea-web-shop\pom.xml与\sea-web-hystrix-dashboard\pom.xml中的相关依赖配置，以及启动类的注解配置。
 > 访问仪表盘，查看服务运行状态：<br/><br/>
-> 1、浏览器访问http://localhost:2001/hystrix，会进入Hystrix Dashboard界面；其中的2001是hystrix-dashboard应用的端口号<br/><br/>
-> 2、在文本框中输入要监控的服务地址http://localhost:(shop应用的端口号)/turbine.stream，这里我们就监控shop应用，在title文本框中随意输入名称即可，然后点击Monitor Stream按钮进入监控后台页面<br/><br/>
+> 1、浏览器访问http://localhost:2001/hystrix ，会进入Hystrix Dashboard界面；其中的2001是hystrix-dashboard应用的端口号<br/><br/>
+> 2、在文本框中输入要监控的服务地址http://localhost:(shop应用的端口号)/turbine.stream ，这里我们就监控shop应用，在title文本框中随意输入名称即可，然后点击Monitor Stream按钮进入监控后台页面<br/><br/>
 > 3、监控效果截图：<br/>
 ![Hystrix Dashboard监控仪表盘](https://gitee.com/uploads/images/2018/0323/044320_5e55e8e7_341760.jpeg "Hystrix Dashboard监控仪表盘.jpg")
 
