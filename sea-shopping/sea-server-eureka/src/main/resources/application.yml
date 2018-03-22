@@ -13,6 +13,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://server.eureka.slave2.com:28761/eureka # eureka服务器的地址
+    fetch-registry: false # 获取注册列表
+    register-with-eureka: true # 是否将自己也注册到其他eureka节点上。一般设置为true或者默认即可，这样才会在eureka控制台上看到所有的eureka集群列表信息
 
 
 
@@ -34,5 +36,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://server.eureka.slave1.com:18761/eureka # eureka服务器的地址
+    fetch-registry: false # 获取注册列表
+    register-with-eureka: true # 是否将自己也注册到其他eureka节点上。一般设置为true或者默认即可，这样才会在eureka控制台上看到所有的eureka集群列表信息
 
 

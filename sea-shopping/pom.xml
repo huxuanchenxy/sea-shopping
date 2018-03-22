@@ -4,10 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <modules>
         <module>sea-server-eureka</module>
         <module>sea-service-user</module>
         <module>sea-web-shop</module>
+        <module>sea-web-hystrix-dashboard</module>
+        <module>sea-service-zuul</module>
+        <module>sea-server-config</module>
     </modules>
 
     <!-- 父项目依赖 -->
@@ -33,6 +37,7 @@
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <java.version>1.8</java.version>
 
+        <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
         <spring.cloud.version>Dalston.SR4</spring.cloud.version>
         <eureka.starter.version>1.4.2.RELEASE</eureka.starter.version>
     </properties>

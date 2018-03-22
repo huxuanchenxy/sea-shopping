@@ -3,6 +3,7 @@ package pers.zb.web.shop.service;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pers.zb.web.shop.service.hystrix.UserServiceHystrix;
 
 /**
  * 这里采用的是feign处理负载均衡的。
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @FeignClient 注解的value的意思是：用于获取哪个服务的；其中sea-service-user是在 \sea-shopping\sea-service-user\src\main\resources\application.yml 中配置的 spring.application.name 的值，用于标识服务名
  *
  */
-@FeignClient(value = "sea-service-user")
+@FeignClient(value = "sea-service-user",fallback = UserServiceHystrix.class)
 public interface UserServiceFeign {
 
     /**
