@@ -72,7 +72,7 @@ rabbitmq目前只用在配置中心，实现动态刷新spring bean，建议安�
 <br/>http://127.0.0.1:18761 或者 http://127.0.0.1:28761 即可进入eureka控制台（其中，18761和28761代表不同的eureka服务器的端口号）
 
 - eureka控制台截图
-
+![springcloud eureka控制台](https://gitee.com/uploads/images/2018/0323/044238_7c12e81e_341760.jpeg "springcloud eureka控制台.jpg")
 
 
 #### 访问项目，查看效果
@@ -107,6 +107,7 @@ rabbitmq目前只用在配置中心，实现动态刷新spring bean，建议安�
 > 1、浏览器访问http://localhost:2001/hystrix，会进入Hystrix Dashboard界面；其中的2001是hystrix-dashboard应用的端口号<br/><br/>
 > 2、在文本框中输入要监控的服务地址http://localhost:(shop应用的端口号)/turbine.stream，这里我们就监控shop应用，在title文本框中随意输入名称即可，然后点击Monitor Stream按钮进入监控后台页面<br/><br/>
 > 3、监控效果截图：<br/>
+![Hystrix Dashboard监控仪表盘](https://gitee.com/uploads/images/2018/0323/044320_5e55e8e7_341760.jpeg "Hystrix Dashboard监控仪表盘.jpg")
 
 > 至于监控仪表的内容都是什么含义，请自行网上查找资料
 
@@ -120,6 +121,7 @@ rabbitmq目前只用在配置中心，实现动态刷新spring bean，建议安�
 > - 然后等eureka注册中心剔除这个down掉的user节点后，再重新访问/router方法，你会发现一直返回的是正常的JSON数据，不再出现“hystrix断路器生效了...”的字样，毕竟还有一个user节点是可用状态的。<br/>
 
 > 断路器效果：<br/>
+![Hystrix断路器效果](https://gitee.com/uploads/images/2018/0323/044340_55bc14d8_341760.jpeg "Hystrix断路器效果.jpg")
 
 > 具体的断路器代码处理，请查看\sea-web-shop\src\main\java\pers\zb\web\shop\service\UserServiceFeign.java与UserServiceHystrix.java的相关注解，以及main启动类的相关注解
 
