@@ -23,12 +23,13 @@ public class EurekaServer {
          * 【在控制台输入的时候，请输入你在application.yml中配置的 spring.profiles 的值（yml中配置的值分别是 slave1、slave2），代表着不同的eurek服务器；】
          * 【启动步骤就是，需要运行两次main方法，分别输入 slave1、slave2 即可启动2个eureka服务器】
          */
-        System.out.println("============================================================= 开始启动eureka服务 =============================================================");
-        System.out.println("请在控制台输入您要启动的 eureka 服务器的节点名称 —— [详细配置请查看application.yml 文件中配置的 spring.profiles 的值]");
-        System.err.println("请输入 slave1 或者 slave2");
-        Scanner scanner = new Scanner(System.in);
-        String profiles = scanner.nextLine();//让用户输入端口号
-        new SpringApplicationBuilder(EurekaServer.class).profiles(profiles).run(args);//启动项目
+//        System.out.println("============================================================= 开始启动eureka服务 =============================================================");
+//        System.out.println("请在控制台输入您要启动的 eureka 服务器的节点名称 —— [详细配置请查看application.yml 文件中配置的 spring.profiles 的值]");
+//        System.err.println("请输入 slave1 或者 slave2");
+//        Scanner scanner = new Scanner(System.in);
+//        String profiles = scanner.nextLine();//让用户输入端口号
+//        new SpringApplicationBuilder(EurekaServer.class).profiles(profiles).run(args);//启动项目
+        new SpringApplicationBuilder(EurekaServer.class).run();//启动项目
 
         System.out.println("============================================================= eureka服务启动成功 =============================================================");
     }

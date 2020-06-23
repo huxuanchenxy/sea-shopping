@@ -25,6 +25,5 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
             <version>${eureka.starter.version}</version>
         </dependency>
-
     </dependencies>
 </project>

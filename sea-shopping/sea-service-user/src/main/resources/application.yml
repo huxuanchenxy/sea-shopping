@@ -1,3 +1,6 @@
+server:
+  port: 9001
+
 spring:
   application:
     # 具体代码调用，请看 \sea-web-shop\src\main\java\pers\zb\web\shop\controller\ShopController.java 中的router方法；
